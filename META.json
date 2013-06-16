@@ -53,7 +53,7 @@
    "provides" : {
       "Acme::Tategaki" : {
          "file" : "lib/Acme/Tategaki.pm",
-         "version" : "0.03"
+         "version" : "0.04"
       }
    },
    "release_status" : "stable",
@@ -67,7 +67,7 @@
          "web" : "https://github.com/kazuph/Acme-Tategaki"
       }
    },
-   "version" : "0.03",
+   "version" : "0.04",
    "x_contributors" : [
       "Kazuhiro Homma <kazu.homma@gmail.com>"
    ]
