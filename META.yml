@@ -27,7 +27,7 @@ no_index:
 provides:
   Acme::Tategaki:
     file: lib/Acme/Tategaki.pm
-    version: 0.01
+    version: 0.02
 requires:
   Array::Transpose: 0
   perl: 5.008005
@@ -35,6 +35,6 @@ resources:
   bugtracker: https://github.com/kazuph/Acme-Tategaki/issues
   homepage: https://github.com/kazuph/Acme-Tategaki
   repository: git://github.com/kazuph/Acme-Tategaki.git
-version: 0.01
+version: 0.02
 x_contributors:
   - 'Kazuhiro Homma <kazu.homma@gmail.com>'
