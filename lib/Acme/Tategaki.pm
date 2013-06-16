@@ -7,7 +7,7 @@ use Array::Transpose;
 use List::Util qw(max);
 use Encode qw/decode_utf8 encode_utf8/;
 
-our $VERSION = "0.02";
+our $VERSION = "0.03";
 
 my @punc             = qw(、 。 ， ．);
 my @horizontal_words = qw(ー 「 」 → ↑ ← ↓ ＝ …);
@@ -49,8 +49,7 @@ Acme::Tategaki - It makes a text vertically.
 
 =head1 SYNOPSIS
 
-    $ tategaki ゆうてい　みやおう　き
-    むこう　ほりいゆうじ　とりやまあきら　ぺぺぺぺぺぺぺぺぺ　ぺぺぺぺぺぺぺぺ
+    $ tategaki ゆうてい　みやおう　きむこう　ほりいゆうじ　とりやまあきら　ぺぺぺぺぺぺぺぺぺ　ぺぺぺぺぺぺぺぺ
     ぺ　ぺぺぺぺぺぺぺぺぺ
     ぺ　ぺ　ぺ　と　ほ　き　み　ゆ
     ぺ　ぺ　ぺ　り　り　む　や　う
