@@ -1,5 +1,5 @@
 {
-   "abstract" : "It makes a text vertically.",
+   "abstract" : "This Module makes a text vertically.",
    "author" : [
       "Kazuhiro Homma <kazuph@cpan.org>"
    ],
@@ -53,7 +53,7 @@
    "provides" : {
       "Acme::Tategaki" : {
          "file" : "lib/Acme/Tategaki.pm",
-         "version" : "0.05"
+         "version" : "0.06"
       }
    },
    "release_status" : "stable",
@@ -63,11 +63,11 @@
       },
       "homepage" : "https://github.com/kazuph/Acme-Tategaki",
       "repository" : {
-         "url" : "git://github.com/kazuph/Acme-Tategaki.git",
+         "url" : "https://github.com/kazuph/Acme-Tategaki.git",
          "web" : "https://github.com/kazuph/Acme-Tategaki"
       }
    },
-   "version" : "0.05",
+   "version" : "0.06",
    "x_contributors" : [
       "Kazuhiro Homma <kazu.homma@gmail.com>"
    ]

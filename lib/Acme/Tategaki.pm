@@ -11,7 +11,7 @@ use List::Util qw(max);
 use Encode qw/decode_utf8 encode_utf8/;
 our @EXPORT = qw( tategaki );
 
-our $VERSION = "0.05";
+our $VERSION = "0.06";
 
 my @punc             = qw(、 。 ， ．);
 my @horizontal_words = qw(ー 「 」 → ↑ ← ↓ ＝ …);
@@ -57,7 +57,7 @@ __END__
 
 =head1 NAME
 
-Acme::Tategaki - It makes a text vertically.
+Acme::Tategaki - This Module makes a text vertically.
 
 =head1 SYNOPSIS
 
