@@ -11,11 +11,11 @@ use List::Util qw(max);
 use Encode qw/decode_utf8 encode_utf8/;
 our @EXPORT = qw( tategaki );
 
-our $VERSION = "0.06";
+our $VERSION = "0.07";
 
 my @punc             = qw(、 。 ， ．);
-my @horizontal_words = qw(ー 「 」 → ↑ ← ↓ ＝ …);
-my @vertical_words   = qw(｜ ¬ ∟ ↓ → ↑ ← ॥ ：);
+my @horizontal_words = qw(ー 「 」 → ↑ ← ↓ ＝ );
+my @vertical_words   = qw(｜ ¬ ∟ ↓ → ↑ ← ॥ );
 my %replace_words = map {$horizontal_words[$_] => $vertical_words[$_]} (0..$#horizontal_words);
 
 sub tategaki {
@@ -27,6 +27,19 @@ sub tategaki {
         $text =~ s/$key/$value/g;
     }
     $text =~ s/$_\s?/$_　/g for @punc;
+
+    # vertical forms (FE10 to FE19)
+    $text =~ s/,/︐/go;
+    $text =~ s/、/︑/go;
+    $text =~ s/。/︒/go;
+    $text =~ s/：/︓/go;
+    $text =~ s/；/︔/go;
+    $text =~ s/！/︕/go;
+    $text =~ s/？/︖/go;
+    $text =~ s/〖/︗/go;
+    $text =~ s/〗/︘/go;
+    $text =~ s/…/︙/go;
+
     @text = split /\s/, $text;
     my $max_lengh =  max map {length $_} @text;
     @text = map{$_ . ('　' x ($max_lengh - length $_))} @text;
