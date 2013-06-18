@@ -40,7 +40,7 @@
       },
       "runtime" : {
          "requires" : {
-            "Array::Transpose" : "0",
+            "Array::Transpose::Ragged" : "0",
             "perl" : "5.008005"
          }
       },
@@ -53,7 +53,7 @@
    "provides" : {
       "Acme::Tategaki" : {
          "file" : "lib/Acme/Tategaki.pm",
-         "version" : "0.08"
+         "version" : "0.09"
       }
    },
    "release_status" : "stable",
@@ -63,11 +63,11 @@
       },
       "homepage" : "https://github.com/kazuph/Acme-Tategaki",
       "repository" : {
-         "url" : "https://github.com/kazuph/Acme-Tategaki.git",
+         "url" : "git://github.com/kazuph/Acme-Tategaki.git",
          "web" : "https://github.com/kazuph/Acme-Tategaki"
       }
    },
-   "version" : "0.08",
+   "version" : "0.09",
    "x_contributors" : [
       "Ryo Okamoto <ryo@aquahill.net>",
       "Kazuhiro Homma <kazu.homma@gmail.com>"

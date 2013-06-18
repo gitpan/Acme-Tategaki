@@ -7,5 +7,6 @@ bin/tategaki
 cpanfile
 lib/Acme/Tategaki.pm
 t/00_compile.t
+t/01_tategaki.t
 META.yml
 MANIFEST

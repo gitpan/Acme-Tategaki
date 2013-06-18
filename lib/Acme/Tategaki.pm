@@ -4,62 +4,30 @@ use strict;
 use warnings;
 use utf8;
 
-use parent 'Exporter';
-
-use Array::Transpose;
-use List::Util qw(max);
+use Array::Transpose::Ragged qw/transpose_ragged/;
 use Encode qw/decode_utf8 encode_utf8/;
+
+use parent 'Exporter';
 our @EXPORT = qw( tategaki );
 
-our $VERSION = "0.08";
+our $VERSION = "0.09";
 
-my @punc             = qw(、 。 ， ．);
-my @horizontal_words = qw(ー 「 」 → ↑ ← ↓ ＝ );
-my @vertical_words   = qw(｜ ¬ ∟ ↓ → ↑ ← ॥ );
-my %replace_words = map {$horizontal_words[$_] => $vertical_words[$_]} (0..$#horizontal_words);
+my @punc = qw(、 。 ， ．);
 
 sub tategaki {
     my @text = @_;
     return unless scalar @text;
-    my $text = join '　', map{decode_utf8 $_} @text;
+    my $text = join '　', map { decode_utf8 $_} @text;
 
-    while (my($key, $value) = each %replace_words) {
-        $text =~ s/$key/$value/g;
-    }
     $text =~ s/$_\s?/$_　/g for @punc;
-
-    # vertical forms (FE10 to FE19)
-    $text =~ s/,/︐/go;
-    $text =~ s/、/︑/go;
-    $text =~ s/。/︒/go;
-    $text =~ s/：/︓/go;
-    $text =~ s/；/︔/go;
-    $text =~ s/！/︕/go;
-    $text =~ s/？/︖/go;
-    $text =~ s/〖/︗/go;
-    $text =~ s/〗/︘/go;
-    $text =~ s/…/︙/go;
-
+    $text =~ tr/ー「」→↑←↓＝,、。〖〗…/｜¬∟↓→↑←॥︐︑︒︗︘︙/;
     @text = split /\s/, $text;
-    my $max_lengh =  max map {length $_} @text;
-    @text = map{$_ . ('　' x ($max_lengh - length $_))} @text;
-    @text = map {[split //, $_]} @text;
-    @text = transpose([@text]);
-    @text = map{encode_utf8 $_} map {join '　', reverse @$_} @text;
+
+    @text = map { [ split //, $_ ] } @text;
+    @text = transpose_ragged( \@text );
+    @text = map { [ map {$_ || '　' } @$_ ] } @text;
+    @text = map { encode_utf8 $_} map { join '　', reverse @$_ } @text;
     return wantarray ? @text : join "\n", @text;
-}
-
-if ( __FILE__ eq $0 ) {
-
-    my $text = Acme::Tategaki::tategaki("お前は、すでに、死んでいる。");
-    warn $text, "\n";
-    my @text = Acme::Tategaki::tategaki("お前は、すでに、死んでいる。");
-    warn $_, "\n" for @text;
-
-    $text = tategaki("お前は、すでに、死んでいる。");
-    warn $text, "\n";
-    @text = tategaki("お前は、すでに、死んでいる。");
-    warn $_, "\n" for @text;
 }
 
 1;
@@ -79,7 +47,7 @@ Acme::Tategaki - This Module makes a text vertically.
     ん　で　前
     で　に　は
     い　︑　︑
-    る
+    る　　　　
     ︒　　　　
 
 =head1 DESCRIPTION
@@ -92,7 +60,7 @@ Kazuhiro Homma E<lt>kazuph@cpan.orgE<gt>
 
 =head1 DEPENDENCIES
 
-L<Array::Transpose>
+L<Array::Transpose>, L<Array::Transpose::Ragged>
 
 =head1 SEE ALSO
 
