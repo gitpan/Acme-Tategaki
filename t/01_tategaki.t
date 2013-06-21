@@ -1,19 +1,28 @@
 use strict;
 use Test::Base::Less;
 use Acme::Tategaki;
+use Encode;
+use utf8;
 
 filters {
     expected => [ qw/chomp/ ],
 };
 
 for my $block (blocks) {
-    is( scalar tategaki($block->input), $block->expected );
+    is( scalar tategaki(map {decode_utf8 $_} $block->input), decode_utf8 $block->expected );
 }
 
 done_testing;
 
 __DATA__
 
+===
+--- input
+ほげ、ふが。ほげ→
+--- expected
+ほ　ふ　ほ
+げ　が　げ
+↓　︒　︑
 ===
 --- input
 cpan
@@ -144,5 +153,10 @@ n
 ===
 --- input
 ＝
+--- expected
+॥
+===
+--- input
+=
 --- expected
 ॥
