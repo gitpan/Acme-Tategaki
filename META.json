@@ -55,7 +55,7 @@
    "provides" : {
       "Acme::Tategaki" : {
          "file" : "lib/Acme/Tategaki.pm",
-         "version" : "0.11"
+         "version" : "0.12"
       }
    },
    "release_status" : "stable",
@@ -65,11 +65,11 @@
       },
       "homepage" : "https://github.com/kazuph/Acme-Tategaki",
       "repository" : {
-         "url" : "https://github.com/kazuph/Acme-Tategaki.git",
+         "url" : "git://github.com/kazuph/Acme-Tategaki.git",
          "web" : "https://github.com/kazuph/Acme-Tategaki"
       }
    },
-   "version" : "0.11",
+   "version" : "0.12",
    "x_contributors" : [
       "Ryo Okamoto <ryo@aquahill.net>",
       "Kazuhiro Homma <kazu.homma@gmail.com>"

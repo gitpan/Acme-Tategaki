@@ -10,7 +10,7 @@ configure_requires:
   CPAN::Meta::Prereqs: 0
   Module::Build: 0.38
 dynamic_config: 0
-generated_by: 'Minilla/v0.5.3, CPAN::Meta::Converter version 2.130880'
+generated_by: 'Minilla/v0.5.3, CPAN::Meta::Converter version 2.120921'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -28,7 +28,7 @@ no_index:
 provides:
   Acme::Tategaki:
     file: lib/Acme/Tategaki.pm
-    version: 0.11
+    version: 0.12
 requires:
   Array::Transpose::Ragged: 0
   Encode::Locale: 0
@@ -36,8 +36,8 @@ requires:
 resources:
   bugtracker: https://github.com/kazuph/Acme-Tategaki/issues
   homepage: https://github.com/kazuph/Acme-Tategaki
-  repository: https://github.com/kazuph/Acme-Tategaki.git
-version: 0.11
+  repository: git://github.com/kazuph/Acme-Tategaki.git
+version: 0.12
 x_contributors:
   - 'Ryo Okamoto <ryo@aquahill.net>'
   - 'Kazuhiro Homma <kazu.homma@gmail.com>'

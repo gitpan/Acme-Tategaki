@@ -4,6 +4,7 @@ LICENSE
 META.json
 README.md
 bin/tategaki
+bin/tategaki_one_line
 cpanfile
 lib/Acme/Tategaki.pm
 t/00_compile.t
