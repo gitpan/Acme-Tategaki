@@ -5,17 +5,17 @@ use Encode;
 use utf8;
 
 filters {
+    input => [ qw/chomp/ ],
     expected => [ qw/chomp/ ],
 };
 
 for my $block (blocks) {
-    is( scalar tategaki(map {decode_utf8 $_} $block->input), decode_utf8 $block->expected );
+    is( tategaki(map {decode_utf8 $_} $block->input), decode_utf8 $block->expected );
 }
 
 done_testing;
 
 __DATA__
-
 ===
 --- input
 ほげ、ふが。ほげ→
@@ -160,3 +160,95 @@ n
 =
 --- expected
 ॥
+===
+--- input
+／
+--- expected
+＼
+===
+--- input
+〜
+--- expected
+∫ 
+===
+--- input
+『
+--- expected
+ ┓
+===
+--- input
+』
+--- expected
+┗ 
+===
+--- input
+縦書〜　だよ〜 『縦書だよねー』 うん【縦書！】
+--- expected
+う　 ┓　だ　縦
+ん　縦　よ　書
+︗　書　∫ 　∫ 
+縦　だ　　　　
+書　よ　　　　
+！　ね　　　　
+︘　｜　　　　
+　　┗ 　　　　
+===
+--- input
+[
+--- expected
+┌┐
+===
+--- input
+]
+--- expected
+└┘
+===
+--- input
+［
+--- expected
+┌┐
+===
+--- input
+］
+--- expected
+└┘
+===
+--- input
+<
+--- expected
+∧ 
+===
+--- input
+>
+--- expected
+∨ 
+===
+--- input
+＜
+--- expected
+∧ 
+===
+--- input
+＞
+--- expected
+∨ 
+===
+--- input
+《
+--- expected
+∧ 
+===
+--- input
+》
+--- expected
+∨ 
+===
+--- input
+＜それは！＞　《だめだ！》　［きっと！］
+--- expected
+┌┐　∧ 　∧ 
+き　だ　そ
+っ　め　れ
+と　だ　は
+！　！　！
+└┘　∨ 　∨ 
